@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<script src='Code/IHConstants.js'></script>
+<script src='Data/heroData.js'></script>
+<script src='Data/equipmentData.js'></script>
+<script src='Data/artifactData.js'></script>
+<script src='Data/treasureData.js'></script>
+<script src='Data/skinData.js'></script>
+<script src='Code/guildTechCode.js'></script>
+<script src='Code/paperDoll.js'></script>
+<script src='Code/frontEnd.js'></script>
+<body onload="initFunction()">
+<table>
+	<tr>
+		<td>
+<table>
+	<tr>
+		<th>Position 1</th>
+	</tr>
+	<tr>
+		<td>Hero: <select id="heroSelect1" onchange="heroChanged()">
+			<option selected=true value="None"></option>
+			<option value="Vesa">No Vesa</option>
+		</select>
+		Star: <select id="starSelect1">
+			<option selected=true value=0></option>
+			<option value=1>1*</option>
+			<option value=2>2*</option>
+			<option value=3>3*</option>
+			<option value=4>4*</option>
+			<option value=5>5*</option>
+			<option value=6>6*</option>
+			<option value=7>7*</option>
+			<option value=8>8*</option>
+			<option value=9>9*</option>
+			<option value=10>10*</option>
+		</select>
+		Level: <input id="levelInput1" type="number" min=1 max=250>
+		</td>
+	</tr>
+	<tr>
+		<td>Treasure Grade: <select id="treasureStarSelect1">
+			<option selected=true value=-1></option>
+			<option value=0>O1*</option>
+			<option value=1>O2*</option>
+			<option value=2>O3*</option>
+			<option value=3>O4*</option>
+			<option value=4>O5*</option>
+			<option value=5>O6*</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Treasure Type: <select id="treasureTypeSelect1">
+			<option selected=true value=0></option>
+			<option value=1>Attack %/Attack</option>
+			<option value=2>HP %/Speed</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Artifact Type: <select id="artifactTypeSelect1">
+			<option selected=true value=0></option>
+			<option value=15>Antlers Cane</option>
+			<option value=16>Fearless Armor</option>
+			<option value=17>Staff</option>
+			<option value=18>Demon Bell</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Artifact Star: <select id="artifactStarSelect1">
+				<option selected=true value=-1></option>
+				<option value=0>1*</option>
+				<option value=1>2*</option>
+				<option value=2>3*</option>
+				<option value=3>4*</option>
+				<option value=4>5*</option>
+				<option value=5>6*</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Weapon: <select id="weaponSelect1">
+				<option selected=true value=0></option>
+				<option value=15>Antlers Cane</option>
+				<option value=16>Fearless Armor</option>
+				<option value=17>Staff</option>
+				<option value=18>Demon Bell</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Armor: <select id="armorSelect1">
+				<option selected=true value=0></option>
+				<option value=15>Antlers Cane</option>
+				<option value=16>Fearless Armor</option>
+				<option value=17>Staff</option>
+				<option value=18>Demon Bell</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Shoes: <select id="shoesSelect1">
+				<option selected=true value=0></option>
+				<option value=15>Antlers Cane</option>
+				<option value=16>Fearless Armor</option>
+				<option value=17>Staff</option>
+				<option value=18>Demon Bell</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Accessories: <select id="accessoriesSelect1">
+				<option selected=true value=0></option>
+				<option value=15>Antlers Cane</option>
+				<option value=16>Fearless Armor</option>
+				<option value=17>Staff</option>
+				<option value=18>Demon Bell</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Skin: <select id="skinSelect1">
+				<option selected=true value=0>No Skin</option>
+				<option value=1>Some Skin</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick="makeHero(1)">Make Hero</button>
+</table>
+</td>
+<td>
+<table>
+	<tr>
+		<th></th>
+		<th>Warrior</th>
+		<th>Mage</th>
+		<th>Ranger</th>
+		<th>Assassin</th>
+		<th>Priest</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td><button onclick="maxWarriorTech()">Max Tech</button></td>
+		<td><button onclick="maxMageTech()">Max Tech</button></td>
+		<td><button onclick="maxRangerTech()">Max Tech</button></td>
+		<td><button onclick="maxAssassinTech()">Max Tech</button></td>
+		<td><button onclick="maxPriestTech()">Max Tech</button></td>
+	</tr>
+	<tr>
+		<td>Tech 1 Level (60):</td>
+		<td><input id="warriorTech1LevelInput" type="number" min=0 max=60 onchange="setGuildTech()"></td>
+		<td><input id="mageTech1LevelInput" type="number" min=0 max=60 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech1LevelInput" type="number" min=0 max=60 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech1LevelInput" type="number" min=0 max=60 onchange="setGuildTech()"></td>
+		<td><input id="priestTech1LevelInput" type="number" min=0 max=60 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 2 Level (50):</td>
+		<td><input id="warriorTech2LevelInput" type="number" min=0 max=50 onchange="setGuildTech()"></td>
+		<td><input id="mageTech2LevelInput" type="number" min=0 max=50 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech2LevelInput" type="number" min=0 max=50 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech2LevelInput" type="number" min=0 max=50 onchange="setGuildTech()"></td>
+		<td><input id="priestTech2LevelInput" type="number" min=0 max=50 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 3 Level (40):</td>
+		<td><input id="warriorTech3LevelInput" type="number" min=0 max=40 onchange="setGuildTech()"></td>
+		<td><input id="mageTech3LevelInput" type="number" min=0 max=40 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech3LevelInput" type="number" min=0 max=40 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech3LevelInput" type="number" min=0 max=40 onchange="setGuildTech()"></td>
+		<td><input id="priestTech3LevelInput" type="number" min=0 max=40 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 4 Level (30):</td>
+		<td><input id="warriorTech4LevelInput" type="number" min=0 max=30 onchange="setGuildTech()"></td>
+		<td><input id="mageTech4LevelInput" type="number" min=0 max=30 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech4LevelInput" type="number" min=0 max=30 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech4LevelInput" type="number" min=0 max=30 onchange="setGuildTech()"></td>
+		<td><input id="priestTech4LevelInput" type="number" min=0 max=30 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 5 Level (20):</td>
+		<td><input id="warriorTech5LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="mageTech5LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech5LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech5LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="priestTech5LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 6 Level (20):</td>
+		<td><input id="warriorTech6LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="mageTech6LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech6LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech6LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="priestTech6LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 7 Level (20):</td>
+		<td><input id="warriorTech7LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="mageTech7LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech7LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech7LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="priestTech7LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+	</tr>
+	<tr>
+		<td>Tech 8 Level (20):</td>
+		<td><input id="warriorTech8LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="mageTech8LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="rangerTech8LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="assassinTech8LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+		<td><input id="priestTech8LevelInput" type="number" min=0 max=20 onchange="setGuildTech()"></td>
+	</tr>
+</table>
+</td>
+</tr>
+<tr>
+	<th>Hero 1</th>
+</tr>
+<tr><td>
+		Hero:<input id='hero1NameInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Level:<input id='hero1LevelInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		HP:<input id='hero1HPInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Energy:<input id='hero1EnergyInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Attack:<input id='hero1AttackInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Armor:<input id='hero1ArmorInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Speed:<input id='hero1SpeedInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Skill Damage:<input id='hero1SkillDmgInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Precision:<input id='hero1PrecisionInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Block:<input id='hero1BlockInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Crit:<input id='hero1CritInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Crit Damage:<input id='hero1CritDmgInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Armor Break:<input id='hero1ArmorBrkInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Control Immune:<input id='hero1CntrlImmInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Reduce Damage:<input id='hero1RedDmgInput' readonly=true></input>
+</td></tr>
+<tr><td>
+		Holy Damage:<input id='hero1HolyDmgInput' readonly=true></input>
+</td></tr>
+</table>
+</body>
+</html>
