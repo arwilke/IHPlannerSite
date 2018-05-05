@@ -1,0 +1,36 @@
+"Additive Stats"
+Order doesnt matter (since additive)
+Can come from any Source
+atkP, hpP, spdP, armP are the only not additive
+
+
+Object heroTeam()
+6 hero objects, with position keys
+heroLineUp = [{'pos':1,'hero':heroObject},
+{'pos':2,'hero':heroObject},
+{'pos':3,'hero':heroObject},
+{'pos':4,'hero':heroObject},
+{'pos':5,'hero':heroObject},
+{'pos':6,'hero':heroObject}];
+monster = {monsterObject}
+aura
+  if(heroLineUp.length === 6) {
+
+  }
+
+
+
+BattleSim()
+Input: Array of He
+
+Exploring the files:
+Top Level Files
+  DroidManifest.xml
+  /Assets
+  classes.dex
+  /lib
+  /META-INF
+  /res
+  resources.armorSelect
+
+/META-INF - Contains SHA1-Digest certification codes for Files
