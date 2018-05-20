@@ -9,13 +9,24 @@
 <!--script src='Code/guildTechCode2.js'></script-->
 <script src="Code/heroReader.js"></script>
 <script src="Code/heroTeam.js"></script>
-<script src="Code/battleSim.js"></script>
+<script src="Code/battleState.js"></script>
+<script src="Code/battleManager.js"></script>
 <script src="Code/main.js"></script>
-<button>Step Next Action</button>
-<button>Step Next Round</button>
-<button>Step All</button>
-<button>Force Crit</button>
-<button>Force Not Crit</button>
-<button>Force Block</button>
-<button>Force Not Block - Not</button>
+<script src="Code/uiCode.js"></script>
+<p>
+  <button id='randButton' onclick="forceButton(-1)">Random</button>
+  <button id='passButton' onclick="forceButton(1)">Force Pass</button>
+  <button id='failButton' onclick="forceButton(0)">Force Fail</button>
+</p>
+<p>
+  <button id='randTargetButton'>Random Targets</button>
+  <button id='forceTargetButton'>Force Targets</button>
+  <input type="checkbox" id="targetPos1Box"><span id='targetPos1Name'>Pos 1 Hero</span>
+  <input type="checkbox" id="targetPos2Box"><span id='targetPos2Name'>Pos 2 Hero</span>
+  <input type="checkbox" id="targetPos3Box"><span id='targetPos3Name'>Pos 3 Hero</span>
+  <input type="checkbox" id="targetPos4Box"><span id='targetPos4Name'>Pos 4 Hero</span>
+  <input type="checkbox" id="targetPos5Box"><span id='targetPos5Name'>Pos 5 Hero</span>
+  <input type="checkbox" id="targetPos6Box"><span id='targetPos6Name'>Pos 6 Hero</span>
+</p>
+<button id='disabler' onclick='disableButtons()'>Random Targets</button>
 </html>
