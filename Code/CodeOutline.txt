@@ -1,0 +1,83 @@
+Code Outline
+battleManger() Object
+
+Accessible Functions
+
+battleState() Object
+Stores all of the parameters of a battle at any given point in time.
+Accessible Functions
+	function getHeroList()
+		Arguments: None
+		Returns: heroList, an array of hero objects
+	function setHeroList(newHeroList)
+		Arguments: newHeroList, an array (length 12) of hero objects
+		Returns: success, boolean, true if set was successful, otherwise false
+
+	function getMonster(side = 0)
+		Arguments: side, 0 for RHS (attackers), !0 for LHS (defenders)
+		Returns: monster object for either attacker or defender
+	function setMonsterEnergy(newEnergy, side = 0)
+		Arguments: newEnergy, int between 0 and ??? representing the monsters energy
+				   side, 0 for RHS (attacker monster), !0 for LHS (defender monster)
+		Returns: success, boolean, true if set was successful, otherwise false
+
+	function getActionStack()
+		Arguments: None
+		Returns: actionStack, an array of action objects currently on the stack, pos 0 is the action being resolved
+	function setActionStack(newActionStack)
+		Arguments: newActionStack, an array of 0 to n Skills that are currently on the stack
+		Returns: success, boolean, true if set was successful
+
+	function getRound()
+		Arguments: None
+		Returns: round, an integer representing the current round of the battle
+	function nextRound()
+		Arguments: None
+		Returns: success, boolean, true if round increment was successful
+
+	function getPhase()
+		Arguments: None
+		Returns: phase, an integer representing the current phase of the round
+	function nextPhase:function(){
+		Arguments: None
+		Returns: success, boolean, true if phase increment was successful
+			
+		
+	
+actionInstance() Object
+Stores all of the parameters of an action
+Accessible Functions
+	function getActor()
+		Arguments: None
+		Returns: actorPos, an integer representing the position in heroList of the actions actor
+	function getAction()
+		Arguments: None
+		Returns: action, a skill from heros.json
+	
+	function getTargets(effect = 1)
+		Arguments: effect, integer, if its 2 it returns the targets for effect2, else effect
+		Returns: targets, an array of target Objects
+	function setTargets(newTargets,effect = 1)
+		Arguments: newTargets, an array of target Objects
+				   effect, integer, if its 2 then targets are set for effect2, else effect
+		Returns: success, boolean, true if phase increment was successful
+	
+
+target()
+Stores all of the parameters and checks for a single effect target
+Accessible Functions
+getPos:function() {
+	function getPos()
+		Arguments: None
+		Returns: pos, int, representing the position in heroList of the target
+	function getCheckList()
+		Arguments: None
+		Returns: checkList, array of objects that contain the various checks for an action and its possible states ex. {'check':'crit','state':0}
+	function setCheckList(newCheckList)
+		Arguments: newCheckList, array of objects that contain the various checks for an action and its possible states ex. {'check':'crit','state':0}
+		Returns: success, boolean, true if phase increment was successful
+
+	function getResolved()
+		Arguments: None
+		Returns: resolved, boolean, true if all checks have non-negative state
+	

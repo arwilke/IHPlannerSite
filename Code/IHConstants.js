@@ -1,13 +1,14 @@
 function cloneObject(obj) {
-    var clone = {};
-    for(var i in obj) {
-        if(obj[i] != null &&  typeof(obj[i])=="object")
-            clone[i] = cloneObject(obj[i]);
-        else
-            clone[i] = obj[i];
-    }
-    return clone;
+  var clone = {};
+  for(var i in obj) {
+      if(obj[i] != null &&  typeof(obj[i])=="object")
+          clone[i] = cloneObject(obj[i]);
+      else
+          clone[i] = obj[i];
+  }
+  return clone;
 }
+var eROUNDLIMIT = 'Round Limit Met'
 
 var heroStatPair = {'atk':['baseAtk','growAtk'],'hp':['baseHp','growHp'],'arm':['baseArm','growArm'],'spd':['baseSpd','growSpd']};
 var statAddMultPair = {'atk':'atkP','hp':'hpP','arm':'armP','spd':'spdP'};
@@ -43,15 +44,15 @@ var statScaling = {'atk':1,
            'armP':1,
 				   'spd':1,
            'spdP':1,
-           'sklP':10,
-           'prec':10,
-           'block':10,
-				   'crit':20,
-				   'critTime':20,
-           'brk':10,
-           'free':10,
-           'decDmg':10,
-           'trueAtk':10,
+           'sklP':1000,
+           'prec':1000,
+           'block':1000,
+				   'crit':2000,
+				   'critTime':2000,
+           'brk':1000,
+           'free':1000,
+           'decDmg':1000,
+           'trueAtk':1000,
            'energy':1};
 /* Stat dictionary
 Game Stat - code stat, Game to Code Ration

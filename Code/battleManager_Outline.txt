@@ -1,0 +1,9 @@
+battleManager Outline
+
+.bManager.contBattle() calls continueBattle()
+
+continueBattle() checks for end conditions, and then calls the stepPhase function for the current phase if there aren't any end conditions
+
+stepHeroPhase() calls stepActionStack().  If stepActionStack() returns false (meaning its empty), then adds a new action to the stack
+
+stepActionStack() returns false if there are no actions, otherwise calls chooseTarget() if the action doesn't have targets

@@ -18,6 +18,11 @@ aura
 
   }
 
+Vesa Math Check (Does Her Heal Resolve before or after IBs -Attack?)
+Attack: 95911
+Heal (if its first): 115093
+Heal (if its second): 
+
 
 
 BattleSim()

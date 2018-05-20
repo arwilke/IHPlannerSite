@@ -7,32 +7,32 @@ var hero = (function(heroCore, level = 250, weapon = {}, armor = {}, shoes = {},
 	var tierSpeed = 1.6;
 	var tier = {'atk':tierValue,'hp':tierValue,'spd':tierSpeed}; //Need to figure out where this comes from
 	function battleStatOrder() {
-							return [tech[0], tech[1], tech[2], tech[3], tech[4], tech[5], tech[6], tech[7],
-						  'pass',
-						  aura,
-						  weapon, armor, shoes, acc,
-						  'classWeapon', 'classArmor', 'classShoes', 'classAcc', //Class Gear
-						  setBonus[0], setBonus[1], setBonus[2],
-						  treas,
-						  arti,
-						  skin,
-						  pet];
-						}
+		return [tech[0], tech[1], tech[2], tech[3], tech[4], tech[5], tech[6], tech[7],
+	  'pass',
+	  aura,
+	  weapon, armor, shoes, acc,
+	  'classWeapon', 'classArmor', 'classShoes', 'classAcc', //Class Gear
+	  setBonus[0], setBonus[1], setBonus[2],
+	  treas,
+	  arti,
+	  skin,
+	  pet];
+	}
 
 	function sheetStatOrder() {
-						  return [weapon, armor, shoes, acc,
-						  'classWeapon', 'classArmor', 'classShoes', 'classAcc', //Class Gear
-						  skin,
-						  setBonus[0], setBonus[1], setBonus[2],
-						  tech[0], tech[1], tech[2], tech[3], tech[4], tech[5], tech[6], tech[7],
-						  'pass',
-							arti,
-						  treas];
-						}
+	  return [weapon, armor, shoes, acc,
+	  'classWeapon', 'classArmor', 'classShoes', 'classAcc', //Class Gear
+	  skin,
+	  setBonus[0], setBonus[1], setBonus[2],
+	  tech[0], tech[1], tech[2], tech[3], tech[4], tech[5], tech[6], tech[7],
+	  'pass',
+		arti,
+	  treas];
+	}
 
 	function guideStatOrder() {
-							return ['pass'];
-						}
+		return ['pass'];
+	}
 
 	function addHeroFlatStat(stat){
 		var heroFlatStat = 0;
@@ -151,28 +151,30 @@ var hero = (function(heroCore, level = 250, weapon = {}, armor = {}, shoes = {},
 			myStat = 0;
 			//console.log('Calc ' + statList[i] + ': ' + myStat);
 			myStat += addHeroFlatStat(statList[i]);
-			for(var k = 0; k < statOrder.length; k++) {
-				//console.log('Calc ' + statList[i] + ' - ' + statOrder[k] + ': ' + myStat);
-				switch (statOrder[k]) {
-					case 'pass':
-						myStat += addPassFlatStat(statList[i]);
-						break;
-					case 'classWeapon':
-						myStat += addOtherFlatStat(weapon,classStatList[statList[i]][heroCore.job]);
-						break;
-					case 'classArmor':
-						myStat += addOtherFlatStat(armor,classStatList[statList[i]][heroCore.job]);
-						break;
-					case 'classShoes':
-						myStat += addOtherFlatStat(shoes,classStatList[statList[i]][heroCore.job]);
-						break;
-					case 'classAcc':
-						myStat += addOtherFlatStat(acc,classStatList[statList[i]][heroCore.job]);
-						break;
-					default:
-						myStat += addOtherFlatStat(statOrder[k],statList[i]);
+			//if(statList[i] !== 'level') {
+				for(var k = 0; k < statOrder.length; k++) {
+					//console.log('Calc ' + statList[i] + ' - ' + statOrder[k] + ': ' + myStat);
+					switch (statOrder[k]) {
+						case 'pass':
+							myStat += addPassFlatStat(statList[i]);
+							break;
+						case 'classWeapon':
+							myStat += addOtherFlatStat(weapon,classStatList[statList[i]][heroCore.job]);
+							break;
+						case 'classArmor':
+							myStat += addOtherFlatStat(armor,classStatList[statList[i]][heroCore.job]);
+							break;
+						case 'classShoes':
+							myStat += addOtherFlatStat(shoes,classStatList[statList[i]][heroCore.job]);
+							break;
+						case 'classAcc':
+							myStat += addOtherFlatStat(acc,classStatList[statList[i]][heroCore.job]);
+							break;
+						default:
+							myStat += addOtherFlatStat(statOrder[k],statList[i]);
+					}
 				}
-			}
+			//}
 			for(var k = 0; k < statOrder.length; k++) {
 				switch (statOrder[k]) {
 					case 'pass':
@@ -268,375 +270,402 @@ var hero = (function(heroCore, level = 250, weapon = {}, armor = {}, shoes = {},
 		setAura:function(newAura){
 			aura = newAura;
 			return aura;
-		}
+		},
+		exists:true,
+		level:level
 	}
 });
 var heroCoreList = [{
-      "heroName": "Vesa",
-      "baseAtk": 354,
-      "maxStar": 10,
-      "baseSpd": 200,
-      "starExp3": {
-        "1": 200,
-        "2": 50000
-      },
-      "name": "维萨5",
-      "heroCard": 1183,
-      "growArm": 6,
-      "group": 4,
-      "baseHp": 6032,
-      "growAtk": 35.4,
-      "skinId": {
-        "1": 60083
-      },
-      "growHp": 603.2,
-      "starExp6": {
-        "1": 2000,
-        "2": 1000000
-      },
-      "disillusSkill": {
-        "1": {
-          "disi": {
-            "1": 1307,
-            "2": 2635,
-            "3": 2636,
-            "4": 2637
-          }
-        }
-      },
-      "tierBase": 12500,
-      "starExp2": {
-        "1": 100,
-        "2": 20000
-      },
-      "disillusMaterial": {
-        "1": {
-          "disi": {
-            "1": 5408,
-            "2": 5408,
-            "3": 6499,
-            "4": 9999
-          }
-        }
-      },
-      "showInGuide": 1,
-      "starLv4": 60,
-      "heroBody": 1183,
-      "energyBase": 50,
-      "material": {
-        "1": 5408,
-        "2": 5408,
-        "3": 6499,
-        "4": 9999
-      },
-      "pasTier1": 2,
-      "pasTier3": 6,
-      "pasTier2": 4,
-      "maxLv": 250,
-      "starLv2": 40,
-      "pasSkill3Id": 2637,
-      "rune": 12500,
-      "disillusGrow": {
-        "1": {
-          "disiG": {
-            "1": 35.4,
-            "2": 603.2,
-            "3": 6,
-            "4": 2
-          }
-        }
-      },
-      "xpBase": 100000,
-      "actSkillId": 1307,
-      "pasSkill1Id": 2635,
-      "atkId": 3023,
-      "stoneMaterial": {
-        "1": 10000
-      },
-      "growSpd": 2,
-      "qlt": 6,
-      "baseArm": 60,
-      "starLv6": 100,
-      "starExp1": {
-        "1": 50,
-        "2": 10000
-      },
-      "job": 5,
-      "starLv5": 80,
-      "starExp4": {
-        "1": 400,
-        "2": 100000
-      },
-      "starLv3": 50,
-      "starExp5": {
-        "1": 1000,
-        "2": 500000
-      },
-      "starLv1": 30,
-      "pasSkill2Id": 2636,
-      "actSkill": {
-        "id": 1307,
-        "name": "Sky collapse",
-        "desc": "Active skill: Deals(262% of attack) damage against 4 random enemies and heals allies for(120% of attack) HP, last 6 rounds.",
-        "details": {
-          "obj2": 3,
-          "trigger": 1,
-          "rand1": 4,
-          "obj1": 24,
-          "kind": 1,
-          "fxSelf": {
-            "1": 5220
-          },
-          "fxMain1": {
-            "1": 5210,
-            "2": 5211
-          },
-          "iconId": 245,
-          "noMiss1": 1,
-          "effect2": {
-            "1": {
-              "type": "hot",
-              "round": 5,
-              "num": 2.4,
-              "ratio": 1
-            }
-          },
-          "sound": "siwanglianren",
-          "effect": {
-            "1": {
-              "type": "hurt",
-              "round": 0,
-              "num": 2.62,
-              "ratio": 1
-            }
-          }
-        }
-      },
-      "pasSkill1": {
-        "id": 2635,
-        "name": "Queen's amnesty III",
-        "desc": "Passive skill: Increases Attack by 30%, HP by 25% and Crit by 35%.",
-        "details": {
-          "skiL": 3,
-          "trigger": 23,
-          "effect": {
-            "1": {
-              "type": "atkP",
-              "round": 0,
-              "num": 0.3,
-              "ratio": 1
-            },
-            "2": {
-              "type": "hpP",
-              "round": 0,
-              "num": 0.25,
-              "ratio": 1
-            },
-            "3": {
-              "type": "crit",
-              "round": 0,
-              "num": 700,
-              "ratio": 1
-            }
-          },
-          "iconId": 246,
-          "obj1": 1,
-          "kind": 2,
-          "attrPas": 1
-        }
-      },
-      "pasSkill2": {
-        "id": 2636,
-        "name": "Symphony of stars III",
-        "desc": "Passive skill: Each attack heals you for(120% of attack) HP for 3 rounds and grants you +30% Attack for 3 rounds.",
-        "details": {
-          "trigger": 2,
-          "effect": {
-            "1": {
-              "type": "hot",
-              "round": 2,
-              "num": 2.4,
-              "ratio": 1
-            },
-            "2": {
-              "type": "atkP",
-              "round": 3,
-              "num": 0.3,
-              "ratio": 1
-            }
-          },
-          "iconId": 247,
-          "obj1": 1,
-          "kind": 2,
-          "skiL": 3
-        }
-      },
-      "pasSkill3": {
-        "id": 2367,
-        "name": "Elegy of confusion III",
-        "desc": "Passive skill: While below 50% health, has 100% chance to silence for 1 rounds to all enemies and increases own Crit Damage by 60% for 6 rounds.(Can only trigger once)",
-        "details": {
-		  "obj2": 1,
-		  "effect": {
-			"1": {
-			  "type": "forbid",
-			  "round": 1,
-			  "num": 0,
-			  "ratio": 1
+	"heroName": "Vesa",
+	"starExp1": {
+		"1": 50,
+		"2": 10000
+	},
+	"qlt": 6,
+	"starLv6": 100,
+	"starLv4": 60,
+	"xpBase": 100000,
+	"baseArm": 60,
+	"growArm": 6,
+	"energyBase": 50,
+	"starExp2": {
+		"1": 100,
+		"2": 20000
+	},
+	"name": "维萨5",
+	"baseHp": 6032,
+	"pasSkill2Id": 2636,
+	"pasSkill3Id": 2637,
+	"growAtk": 35.4,
+	"atkId": 3023,
+	"starExp5": {
+		"1": 1000,
+		"2": 500000
+	},
+	"material": {
+		"1": 5408,
+		"2": 5408,
+		"3": 6499,
+		"4": 9999
+	},
+	"baseSpd": 200,
+	"maxStar": 10,
+	"pasTier1": 2,
+	"starExp6": {
+		"1": 2000,
+		"2": 1000000
+	},
+	"pasTier2": 4,
+	"pasSkill1Id": 2635,
+	"starExp4": {
+		"1": 400,
+		"2": 100000
+	},
+	"heroCard": 1183,
+	"disillusSkill": {
+		"1": {
+			"disi": {
+				"1": 1307,
+				"2": 2635,
+				"3": 2636,
+				"4": 2637
 			}
-		  },
-		  "trigger": 17,
-		  "iconId": 248,
-		  "effect2": {
-			"1": {
-			  "type": "critTime",
-			  "round": 6,
-			  "num": 600,
-			  "ratio": 1
-			}
-		  },
-		  "obj1": 12,
-		  "kind": 2,
-		  "skiL": 3
 		}
-      },
-      "disiG": [
-        [
-          35.4,
-          603.2,
-          6,
-          2
-        ]
-      ],
-      "disiSkill": [
-        [
-          {
-            "id": 1307,
-            "name": "Sky collapse",
-            "desc": "Active skill: Deals(262% of attack) damage against 4 random enemies and heals allies for(120% of attack) HP, last 6 rounds.",
-            "details": {
-              "obj2": 3,
-              "trigger": 1,
-              "rand1": 4,
-              "obj1": 24,
-              "kind": 1,
-              "fxSelf": {
-                "1": 5220
-              },
-              "fxMain1": {
-                "1": 5210,
-                "2": 5211
-              },
-              "iconId": 245,
-              "noMiss1": 1,
-              "effect2": {
-                "1": {
-                  "type": "hot",
-                  "round": 5,
-                  "num": 2.4,
-                  "ratio": 1
-                }
-              },
-              "sound": "siwanglianren",
-              "effect": {
-                "1": {
-                  "type": "hurt",
-                  "round": 0,
-                  "num": 2.62,
-                  "ratio": 1
-                }
-              }
-            }
-          },
-          {
-            "id": 2635,
-            "name": "Queen's amnesty III",
-            "desc": "Passive skill: Increases Attack by 30%, HP by 25% and Crit by 35%.",
-            "details": {
-              "skiL": 3,
-              "trigger": 23,
-              "effect": {
-                "1": {
-                  "type": "atkP",
-                  "round": 0,
-                  "num": 0.3,
-                  "ratio": 1
-                },
-                "2": {
-                  "type": "hpP",
-                  "round": 0,
-                  "num": 0.25,
-                  "ratio": 1
-                },
-                "3": {
-                  "type": "crit",
-                  "round": 0,
-                  "num": 700,
-                  "ratio": 1
-                }
-              },
-              "iconId": 246,
-              "obj1": 1,
-              "kind": 2,
-              "attrPas": 1
-            }
-          },
-          {
-            "id": 2636,
-            "name": "Symphony of stars III",
-            "desc": "Passive skill: Each attack heals you for(120% of attack) HP for 3 rounds and grants you +30% Attack for 3 rounds.",
-            "details": {
-              "trigger": 2,
-              "effect": {
-                "1": {
-                  "type": "hot",
-                  "round": 2,
-                  "num": 2.4,
-                  "ratio": 1
-                },
-                "2": {
-                  "type": "atkP",
-                  "round": 3,
-                  "num": 0.3,
-                  "ratio": 1
-                }
-              },
-              "iconId": 247,
-              "obj1": 1,
-              "kind": 2,
-              "skiL": 3
-            }
-          },
-          {
-            "id": 2637,
-            "name": "Elegy of confusion III",
-            "desc": "Passive skill: While below 50% health, has 100% chance to silence for 1 rounds to all enemies and increases own Crit Damage by 60% for 6 rounds.(Can only trigger once)",
-            "details": {
-              "obj2": 1,
-              "effect": {
-                "1": {
-                  "type": "forbid",
-                  "round": 1,
-                  "num": 0,
-                  "ratio": 1
-                }
-              },
-              "trigger": 17,
-              "iconId": 248,
-              "effect2": {
-                "1": {
-                  "type": "critTime",
-                  "round": 6,
-                  "num": 600,
-                  "ratio": 1
-                }
-              },
-              "obj1": 12,
-              "kind": 2,
-              "skiL": 3
-            }
-          }
-        ]
-      ]
-    }
+	},
+	"disillusGrow": {
+		"1": {
+			"disiG": {
+				"1": 35.4,
+				"2": 603.2,
+				"3": 6,
+				"4": 2
+			}
+		}
+	},
+	"group": 4,
+	"disillusMaterial": {
+		"1": {
+			"disi": {
+				"1": 5408,
+				"2": 5408,
+				"3": 6499,
+				"4": 9999
+			}
+		}
+	},
+	"showInGuide": 1,
+	"starLv2": 40,
+	"maxLv": 250,
+	"heroBody": 1183,
+	"rune": 12500,
+	"stoneMaterial": {
+		"1": 10000
+	},
+	"pasTier3": 6,
+	"skinId": {
+		"1": 60083
+	},
+	"actSkillId": 1307,
+	"growHp": 603.2,
+	"starLv3": 50,
+	"job": 5,
+	"tierBase": 12500,
+	"starExp3": {
+		"1": 200,
+		"2": 50000
+	},
+	"starLv1": 30,
+	"starLv5": 80,
+	"growSpd": 2,
+	"baseAtk": 354,
+	"id": 75409,
+	"atkSkill": {
+		"id": 3023,
+		"details": {
+			"effect": {
+				"1": {
+					"round": 0,
+					"num": 1,
+					"ratio": 1,
+					"type": "hurt"
+				}
+			},
+			"fxSelf": {
+				"1": 1040
+			},
+			"trigger": 1,
+			"fxHurt1": {
+				"1": 1042
+			},
+			"fxMain1": {
+				"1": 1041
+			},
+			"sound": "zisejiguang",
+			"obj1": 11,
+			"kind": 1
+		}
+	},
+	"actSkill": {
+		"id": 1307,
+		"name": "Sky collapse",
+		"desc": "Active skill: Deals(272% of attack) damage against 4 random enemies and heals allies for(120% of attack) HP, last 6 rounds.",
+		"details": {
+			"effect": {
+				"1": {
+					"round": 0,
+					"num": 2.72,
+					"ratio": 1,
+					"type": "hurt"
+				}
+			},
+			"iconId": 245,
+			"sound": "siwanglianren",
+			"effect2": {
+				"1": {
+					"round": 5,
+					"num": 2.4,
+					"ratio": 1,
+					"type": "hot"
+				}
+			},
+			"rand1": 4,
+			"trigger": 1,
+			"fxMain1": {
+				"1": 5210,
+				"2": 5211
+			},
+			"fxSelf": {
+				"1": 5220
+			},
+			"obj2": 3,
+			"obj1": 24,
+			"kind": 1
+		}
+	},
+	"pasSkill1": {
+		"id": 2635,
+		"name": "Queen's amnesty III",
+		"desc": "Passive skill: Increases Attack by 30%, HP by 25% and Crit by 35%.",
+		"details": {
+			"effect": {
+				"1": {
+					"round": 0,
+					"num": 0.3,
+					"ratio": 1,
+					"type": "atkP"
+				},
+				"2": {
+					"round": 0,
+					"num": 0.25,
+					"ratio": 1,
+					"type": "hpP"
+				},
+				"3": {
+					"round": 0,
+					"num": 700,
+					"ratio": 1,
+					"type": "crit"
+				}
+			},
+			"iconId": 246,
+			"trigger": 23,
+			"skiL": 3,
+			"attrPas": 1,
+			"obj1": 1,
+			"kind": 2
+		}
+	},
+	"pasSkill2": {
+		"id": 2636,
+		"name": "Symphony of stars III",
+		"desc": "Passive skill: Each attack heals you for(120% of attack) HP for 3 rounds and grants you +30% Attack for 3 rounds.",
+		"details": {
+			"effect": {
+				"1": {
+					"round": 2,
+					"num": 2.4,
+					"ratio": 1,
+					"type": "hot"
+				},
+				"2": {
+					"round": 3,
+					"num": 0.3,
+					"ratio": 1,
+					"type": "atkP"
+				}
+			},
+			"iconId": 247,
+			"trigger": 2,
+			"skiL": 3,
+			"obj1": 1,
+			"kind": 2
+		}
+	},
+	"pasSkill3": {
+		"id": 2637,
+		"name": "Elegy of confusion III",
+		"desc": "Passive skill: While below 50% health, has 100% chance to silence for 1 rounds to all enemies and increases own Crit Damage by 60% for 6 rounds.(Can only trigger once)",
+		"details": {
+			"effect": {
+				"1": {
+					"round": 1,
+					"num": 0,
+					"ratio": 1,
+					"type": "forbid"
+				}
+			},
+			"iconId": 248,
+			"trigger": 17,
+			"skiL": 3,
+			"obj1": 12,
+			"obj2": 1,
+			"effect2": {
+				"1": {
+					"round": 6,
+					"num": 600,
+					"ratio": 1,
+					"type": "critTime"
+				}
+			},
+			"kind": 2
+		}
+	},
+	"disiG": [
+		[
+			35.4,
+			603.2,
+			6,
+			2
+		]
+	],
+	"disiSkill": [
+		[
+			{
+				"id": 1307,
+				"name": "Sky collapse",
+				"desc": "Active skill: Deals(272% of attack) damage against 4 random enemies and heals allies for(120% of attack) HP, last 6 rounds.",
+				"details": {
+					"effect": {
+						"1": {
+							"round": 0,
+							"num": 2.72,
+							"ratio": 1,
+							"type": "hurt"
+						}
+					},
+					"iconId": 245,
+					"sound": "siwanglianren",
+					"effect2": {
+						"1": {
+							"round": 5,
+							"num": 2.4,
+							"ratio": 1,
+							"type": "hot"
+						}
+					},
+					"rand1": 4,
+					"trigger": 1,
+					"fxMain1": {
+						"1": 5210,
+						"2": 5211
+					},
+					"fxSelf": {
+						"1": 5220
+					},
+					"obj2": 3,
+					"obj1": 24,
+					"kind": 1
+				}
+			},
+			{
+				"id": 2635,
+				"name": "Queen's amnesty III",
+				"desc": "Passive skill: Increases Attack by 30%, HP by 25% and Crit by 35%.",
+				"details": {
+					"effect": {
+						"1": {
+							"round": 0,
+							"num": 0.3,
+							"ratio": 1,
+							"type": "atkP"
+						},
+						"2": {
+							"round": 0,
+							"num": 0.25,
+							"ratio": 1,
+							"type": "hpP"
+						},
+						"3": {
+							"round": 0,
+							"num": 700,
+							"ratio": 1,
+							"type": "crit"
+						}
+					},
+					"iconId": 246,
+					"trigger": 23,
+					"skiL": 3,
+					"attrPas": 1,
+					"obj1": 1,
+					"kind": 2
+				}
+			},
+			{
+				"id": 2636,
+				"name": "Symphony of stars III",
+				"desc": "Passive skill: Each attack heals you for(120% of attack) HP for 3 rounds and grants you +30% Attack for 3 rounds.",
+				"details": {
+					"effect": {
+						"1": {
+							"round": 2,
+							"num": 2.4,
+							"ratio": 1,
+							"type": "hot"
+						},
+						"2": {
+							"round": 3,
+							"num": 0.3,
+							"ratio": 1,
+							"type": "atkP"
+						}
+					},
+					"iconId": 247,
+					"trigger": 2,
+					"skiL": 3,
+					"obj1": 1,
+					"kind": 2
+				}
+			},
+			{
+				"id": 2637,
+				"name": "Elegy of confusion III",
+				"desc": "Passive skill: While below 50% health, has 100% chance to silence for 1 rounds to all enemies and increases own Crit Damage by 60% for 6 rounds.(Can only trigger once)",
+				"details": {
+					"effect": {
+						"1": {
+							"round": 1,
+							"num": 0,
+							"ratio": 1,
+							"type": "forbid"
+						}
+					},
+					"iconId": 248,
+					"trigger": 17,
+					"skiL": 3,
+					"obj1": 12,
+					"obj2": 1,
+					"effect2": {
+						"1": {
+							"round": 6,
+							"num": 600,
+							"ratio": 1,
+							"type": "critTime"
+						}
+					},
+					"kind": 2
+				}
+			}
+		]
+	]
+}
 ];

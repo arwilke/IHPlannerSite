@@ -40,6 +40,7 @@ var myHero6 = cloneObject(myHero1);*/
 
 var myTeam = new heroTeam();
 myTeam.addHero(myHero,1);
+
 /*myTeam.addHero(myHero1,1);
 myTeam.addHero(myHero2,2);
 myTeam.addHero(myHero3,3);
@@ -55,11 +56,15 @@ myTeam.getHero(6).printHeroStats('b');*/
 //console.log('1: ' + myTeam.lineUp());
 myTeam.getHero(1).printHeroStats('b');
 console.log('myTeam has ' + myTeam.getHero().length + ' positions!');
-
-var myBattle = new battle(myTeam,myTeam);
-myBattle.stepAction();
-myBattle.stepAction();
-myBattle.stepAction();
-myBattle.stepAction();
-myBattle.stepAction();
-myBattle.stepAction();
+//var myBattleState = new battleState(myTeam,myTeam);
+var myBattleManager = new battleManager(myTeam,myTeam);
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
+myBattleManager.contBattle();
